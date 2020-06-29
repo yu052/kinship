@@ -16,6 +16,9 @@ kinship.sibling.standard is a function to find all the siblings and half-sibling
 kinship.mate is a function to find all the individuals mated with a given individual.  
 
 By playing around with these functions, you can manage you pedigree and generate pedigrees of individuals you are interested in in a big pedigree which is not possible to plot out.  For instance, if you would like to plot all the descendants of all sibling and half-sibling of a targeted individual, you could achieve it like this:
+  individual<-ped$individual
+  fa<-ped$sire
+  mo<-ped$dam
   sibling<-kinship.sibling.standart(id,individual,fa,mo)
   ### extract the descendants of all siblings
   sibling_descent_all<-data.frame()
