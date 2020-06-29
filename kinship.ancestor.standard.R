@@ -1,6 +1,6 @@
-### g indicate the upper generations to find # k > 1
+### g indicate the number of upper generations to look # k > 1
 ### id is the NHSB id of the target individual
-### wholeped is the complete pedigree records, default "allped",using string
+
 kinship.ancestor<-function(g,id,individual,fa,mo){
   individual<-as.character(individual)
   fa<-as.character(fa)
