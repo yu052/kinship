@@ -15,19 +15,19 @@ kinship.sibling.standard is a function to find all the siblings and half-sibling
 
 kinship.mate is a function to find all the individuals mated with a given individual.  
 
-By playing around with these functions, you can manage you pedigree and generate pedigrees of individuals you are interested in in a big pedigree which is not possible to plot out.  For instance, if you would like to plot all the descendants of all sibling and half-sibling of a targeted individual, you could achieve it like this:
-  individual<-ped$individual
-  fa<-ped$sire
-  mo<-ped$dam
-  sibling<-kinship.sibling.standart(id,individual,fa,mo)
-  ### extract the descendants of all siblings
-  sibling_descent_all<-data.frame()
-  for (i in sibling[,1] ) {
-    sibling_descent<-kinship.descendant.standard(i,g=1,individual,fa,mo)
-    sibling_descent_all<-rbind(sibling_descent_all,sibling_descent)
-  }
-  sibling_descent_all<-unique(sibling_descent_all)
-  ### if you would like to add a few generation of ancestor as well, you could use kinship.ancestor.standard(g,id,individual,fa,mo) function
-  ### find founders
-  sibling_descent_all<-kinship.make.ped(indidvidual,fa,mo)
-  ### then add the sex, affection and other information. remove the duplicates, then it is ready for the pedigree() function of Kinship2 package.
+By playing around with these functions, you can manage you pedigree and generate pedigrees of individuals you are interested in in a big pedigree which is not possible to plot out.  For instance, if you would like to plot all the descendants of all sibling and half-sibling of a targeted individual, you could achieve it like this:  
+  individual<-ped$individual  
+  fa<-ped$sire  
+  mo<-ped$dam  
+  sibling<-kinship.sibling.standart(id,individual,fa,mo)  
+  ### extract the descendants of all siblings  
+  sibling_descent_all<-data.frame()  
+  for (i in sibling[,1] ) {  
+    sibling_descent<-kinship.descendant.standard(i,g=1,individual,fa,mo)  
+    sibling_descent_all<-rbind(sibling_descent_all,sibling_descent)  
+  }  
+  sibling_descent_all<-unique(sibling_descent_all)  
+  ### if you would like to add a few generation of ancestor as well, you could use kinship.ancestor.standard(g,id,individual,fa,mo) function  
+  ### find founders  
+  sibling_descent_all<-kinship.make.ped(indidvidual,fa,mo)  
+  ### then add the sex, affection and other information. remove the duplicates, then it is ready for the pedigree() function of Kinship2 package.  
