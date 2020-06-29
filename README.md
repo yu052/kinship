@@ -1,4 +1,4 @@
-Few R functions to help to manage the pedigree records.
+Few R functions to help to manage the pedigree records.  
 kinship.make.ped is function to convert the normal pedigree records to a format needed by Kinship2 package in R. 
 kinship.ancestor.standard is the function to extract the given generations of ancestors of the given individual.
 kinship.descendant.standard is the function to extract the given number of generations descendants of a given individual.
