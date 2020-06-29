@@ -1,7 +1,6 @@
 
 ### id of the target ancestor individual
-### wholeped is the complete pedigree records, given in string
-#wholeped<-"allped"
+
 
 kinship.descendant.standard<-function(id,individual,fa,mo,g=99999){
   individual<-as.character(individual)
