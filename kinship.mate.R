@@ -2,6 +2,7 @@
 ### id of the target ancestor individual
 ### wholeped is the complete pedigree records, given in string
 #wholeped<-"allped"
+
 kinship.mate<-function(id,individual,fa,mo){
   individual<-as.character(individual)
   fa<-as.character(fa)
@@ -27,6 +28,5 @@ kinship.mate<-function(id,individual,fa,mo){
   }
   mate_list<-mate_list[!is.na(mate_list)]
   mate_list<-unique(mate_list)
-return(mate_list)
+  return(mate_list)
 }
-glp52<-kinship.mate("GLP52",individual,fa,mo)

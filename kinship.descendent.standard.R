@@ -2,6 +2,7 @@
 ### id of the target ancestor individual
 ### wholeped is the complete pedigree records, given in string
 #wholeped<-"allped"
+
 kinship.descendent.standard<-function(id,individual,fa,mo,g=99999){
   individual<-as.character(individual)
   fa<-as.character(fa)
@@ -18,23 +19,23 @@ kinship.descendent.standard<-function(id,individual,fa,mo,g=99999){
     self<-self
     print(paste(id,"no descendents"))
   }else{
-      for (iter in 1:g) {
-    for (id in self$individual ) {
-      fa<-allped[which(allped$sire==id),]
-      mo<-allped[which(allped$dam==id),]
-      self<-rbind(self,fa,mo)
-      self<-data.frame(apply(self, 2, function(y) as.character(y)))
+    for (iter in 1:g) {
+      for (id in self$individual ) {
+        fa<-allped[which(allped$sire==id),]
+        mo<-allped[which(allped$dam==id),]
+        self<-rbind(self,fa,mo)
+        self<-data.frame(apply(self, 2, function(y) as.character(y)))
+        self<-unique(self)
+      }
       self<-unique(self)
+      nrow_new<-nrow(self)
+      if (nrow_new==nrow_raw) {
+        break # break when the size of the data frame don't increase, this mean the end of the descendents
+      }
+      nrow_raw<-nrow_new
     }
-    self<-unique(self)
-    nrow_new<-nrow(self)
-    if (nrow_new==nrow_raw) {
-      break # break when the size of the data frame don't increase, this mean the end of the descendents
-    }
-    nrow_raw<-nrow_new
   }
-  }
-
+  
   mo<-allped[which(allped$individual==moNHSB),]
   fa<-allped[which(allped$individual==faNHSB),]
   mo[1,2:3]<-NA;fa[1,2:3]<-NA
