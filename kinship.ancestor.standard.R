@@ -1,4 +1,4 @@
-### g indicate the number of upper generations to look # k > 1
+### g indicate the number of generations to look up
 ### id is the NHSB id of the target individual
 
 kinship.ancestor<-function(g,id,individual,fa,mo){
@@ -12,6 +12,9 @@ kinship.ancestor<-function(g,id,individual,fa,mo){
   fa<-allped[which(allped$individual==as.character(self$sire)),]
   mo<-allped[which(allped$individual==as.character(self$dam)),]
   ped<-rbind(self,fa,mo)
+  if (g == 1) {
+    return(ped)
+    } else {
   for (g in 2:g) {
     number_individual<-nrow(ped)
     for (i in 1:number_individual) {
@@ -26,4 +29,5 @@ kinship.ancestor<-function(g,id,individual,fa,mo){
   ped[!(ped[,2] %in% ped[,1]),2:3]<-NA
   ped[!(ped[,3] %in% ped[,1]),2:3]<-NA
   return(ped)
+ }
 }
