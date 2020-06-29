@@ -1,5 +1,5 @@
 ### sort the pedigree not in a format of kinship2, to extract the founders and make the records of the founders
-### give the id, faid, moid, return a compact pedigree with three columns, individual, sire, dam
+### give the id, faid, moid, return a pedigree with three columns, individual, sire, dam
 kinship.make.ped<-function(individual,fa,mo){
   individual<-as.character(individual)
   fa<-as.character(fa)
