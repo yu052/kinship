@@ -3,7 +3,7 @@
 ### wholeped is the complete pedigree records, given in string
 #wholeped<-"allped"
 
-kinship.descendent.standard<-function(id,individual,fa,mo,g=99999){
+kinship.descendant.standard<-function(id,individual,fa,mo,g=99999){
   individual<-as.character(individual)
   fa<-as.character(fa)
   mo<-as.character(mo)
@@ -17,7 +17,7 @@ kinship.descendent.standard<-function(id,individual,fa,mo,g=99999){
   nrow_raw<-nrow(self)
   if (!(id %in% c(allped$sire,allped$dam))){
     self<-self
-    print(paste(id,"no descendents"))
+    print(paste(id,"no descendants"))
   }else{
     for (iter in 1:g) {
       for (id in self$individual ) {
@@ -30,7 +30,7 @@ kinship.descendent.standard<-function(id,individual,fa,mo,g=99999){
       self<-unique(self)
       nrow_new<-nrow(self)
       if (nrow_new==nrow_raw) {
-        break # break when the size of the data frame don't increase, this mean the end of the descendents
+        break # break when the size of the data frame don't increase, this mean the end of the descendants
       }
       nrow_raw<-nrow_new
     }
