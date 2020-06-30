@@ -7,7 +7,7 @@ kinship.ancestor<-function(g,id,individual,fa,mo){
   mo<-as.character(mo)
   allped<-data.frame(individual,fa,mo)
   colnames(allped)<-c("individual","sire","dam")
-  try(if(g<2) stop("generation number should bigger than 1"))
+  #try(if(g<2) stop("generation number should bigger than 1"))
   self<-allped[which(allped$individual==id),]
   fa<-allped[which(allped$individual==as.character(self$sire)),]
   mo<-allped[which(allped$individual==as.character(self$dam)),]
