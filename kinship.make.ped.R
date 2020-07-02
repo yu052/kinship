@@ -1,9 +1,12 @@
 ### sort the pedigree not in a format of kinship2, to extract the founders and make the records of the founders
-### give the id, faid, moid, return a pedigree with three columns, individual, sire, dam
+### give the id, faid, moid, return a compact pedigree with three columns, individual, sire, dam
+### sex column can be added after implementation of this function by merge()
 kinship.make.ped<-function(individual,fa,mo){
-  individual<-as.character(individual)
-  fa<-as.character(fa)
-  mo<-as.character(mo)
+  
+  individual<-as.character(individual);fa<-as.character(fa);mo<-as.character(mo)
+  n <- length(individual)
+  if (length(fa)!=n) stop("Mismatched length, individual and fa")
+  if (length(mo)!=n) stop("Mismatched length, individual and mo")
   allped<-data.frame(individual,fa,mo)
   colnames(allped)<-c("individual","sire","dam")
   allped$individual<-as.character(allped$individual);allped$sire<-as.character(allped$sire);allped$dam<-as.character(allped$dam)
@@ -14,6 +17,6 @@ kinship.make.ped<-function(individual,fa,mo){
                       "sire"=rep(NA,length(individual_founder)),
                       "dam"=rep(NA,length(individual_founder)))
   allped<-rbind(allped,founder)
-  allped<-allped[!is.na(allped$individual),]
+  allped<-unique(allped[!is.na(allped$individual),])
   return(allped)
 }
